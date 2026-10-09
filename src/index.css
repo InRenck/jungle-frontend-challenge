@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@theme {
+  --color-bg: #130c09; --color-panel: #1f1511; --color-line: #3a2a20;
+  --color-brand: #d58a4a; --color-ink: #e9d9c8; --color-mute: #a58a72;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+body { @apply bg-bg text-ink font-mono text-xs; }
+@layer components {
+  .btn { @apply bg-brand text-bg font-bold rounded px-4 py-2 cursor-pointer hover:brightness-110 focus-visible:outline-2 outline-ink; }
+  .btn-ghost { @apply border border-line rounded px-4 py-2 cursor-pointer hover:border-brand; }
+  .input { @apply w-full bg-bg border border-line rounded px-2 py-2 outline-none focus:border-brand placeholder:text-mute; }
+  .panel { @apply bg-panel border border-line rounded; }
+}
