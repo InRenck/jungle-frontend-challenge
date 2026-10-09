@@ -1,45 +1,49 @@
 import { useState, type ReactNode } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Activity, Download, Gift, Heart, LifeBuoy, LogOut, User, Wallet } from "lucide-react";
+import { useAuth } from "../auth";
 
-const MENU: [string, string][] = [
-  ["Dados do perfil", "/perfil"],
-  ["Carteiras", "/perfil/carteiras"],
-  ["Atividade", "#"],
-  ["Lista de interesse", "#"],
-  ["Ofertas", "#"],
-  ["Arquivos baixados", "#"],
-  ["Suporte", "#"],
-];
+const MENU = [
+  ["Dados do perfil", "/perfil", User],
+  ["Carteiras", "/perfil/carteiras", Wallet],
+  ["Atividade", "#", Activity],
+  ["Lista de interesse", "#", Heart],
+  ["Ofertas", "#", Gift],
+  ["Arquivos baixados", "#", Download],
+  ["Suporte", "#", LifeBuoy],
+] as const;
 
 export function ProfileLayout() {
+  const { logout } = useAuth();
+  const nav = useNavigate();
   const cls = ({ isActive }: { isActive: boolean }) =>
-    `block border-l-2 px-3 py-2 ${isActive ? "border-brand text-brand" : "border-transparent text-mute hover:text-ink"}`;
+    `flex items-center gap-2 border-l-2 px-3 py-2 ${isActive ? "border-brand text-brand" : "border-transparent text-mute hover:text-ink"}`;
   return (
     <div className="grid gap-6 md:grid-cols-[200px_1fr]">
-      <aside className="panel h-fit p-2">
+      <aside className="panel h-fit p-2 max-md:overflow-x-auto">
         <h2 className="mb-2 px-3 font-bold">Meu perfil</h2>
         <nav>
-          {MENU.map(([label, to]) =>
+          {MENU.map(([label, to, Icon]) =>
             to === "#" ? (
               <a
                 key={label}
                 href="#"
-                className="block border-l-2 border-transparent px-3 py-2 text-mute hover:text-ink"
+                className="flex items-center gap-2 border-l-2 border-transparent px-3 py-2 text-mute hover:text-ink"
               >
-                {label}
+                <Icon size={13} /> {label}
               </a>
             ) : (
               <NavLink key={label} to={to} end className={cls}>
-                {label}
+                <Icon size={13} /> {label}
               </NavLink>
             ),
           )}
-          <NavLink
-            to="/"
-            className="mt-2 block border-t border-line px-3 py-2 text-brand"
+          <button
+            onClick={() => { logout(); nav("/"); }}
+            className="mt-2 flex w-full items-center gap-2 border-t border-line px-3 py-2 text-brand"
           >
-            Sair
-          </NavLink>
+            <LogOut size={13} /> Sair
+          </button>
         </nav>
       </aside>
       <Outlet />

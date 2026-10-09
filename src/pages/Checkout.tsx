@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { MoreVertical, Wallet } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { NftImg } from '../components'
 import { NFTS, eth } from '../data'
@@ -11,16 +12,28 @@ const FIELDS = ['Nome de exibição', 'Nome de usuário', 'Apelido da carteira',
 export default function Checkout() {
   const { lines, subtotal, fee, total, clear } = useCart()
   const [wallet, setWallet] = useState('Coinbase Wallet')
+  const [account, setAccount] = useState('Reserva')
   const nav = useNavigate()
   if (!lines.length) return <p>Nada para pagar. <Link className="text-brand" to="/">Explorar NFTs</Link></p>
 
   const confirm = (e: React.FormEvent) => {
     e.preventDefault()
-    nav('/confirmacao', { state: { lines, total, wallet } })
+    nav('/confirmacao', { state: { lines, total, wallet, account } })
     clear()
   }
   return (
-    <form onSubmit={confirm}>
+    <>
+      <form className="mobile-checkout md:hidden" onSubmit={confirm}>
+        <div className="flex items-center justify-between mb-3"><h2>Carteira conectada</h2><button type="button" className="text-brand" onClick={() => setAccount(a => a === 'Reserva' ? 'Principal' : 'Reserva')}>Trocar carteira</button></div>
+        <div className="space-y-3">
+          {['Reserva', 'Principal'].map(a => <label key={a} className="mobile-wallet-account"><input type="radio" name="mobile-account" checked={account === a} onChange={() => setAccount(a)} /><span><strong>{a}</strong><small>{a === 'Reserva' ? 'nova.kurio.eth' : '0xA91F…E82c'}</small><small>{a === 'Reserva' ? 'Rede Polygon' : 'Rede principal Ethereum'}</small></span><MoreVertical size={15} className="ml-auto text-mute" /></label>)}
+        </div>
+        <h2 className="mt-5 mb-3">Carteira e rede</h2>
+        <div className="space-y-3">{WALLETS.map((w,i) => <label key={w} className="mobile-wallet-provider"><span className="wallet-symbol">{i === 0 ? 'W' : i === 1 ? 'M' : <Wallet size={15} />}</span><span>{w}</span><input className="ml-auto" type="radio" name="mobile-wallet" checked={wallet === w} onChange={() => setWallet(w)} /></label>)}</div>
+        <p className="mt-3 text-right font-bold">Total: <span className="ml-2 text-brand">{total.toFixed(3)} ETH</span></p>
+        <button type="submit" className="mobile-pill checkout-confirm">Confirmar compra</button>
+      </form>
+      <form className="hidden md:block" onSubmit={confirm}>
       <p className="mb-4 text-mute">Início / Mercado / Pagamento</p>
       <div className="grid gap-6 md:grid-cols-[1fr_320px]">
         <div>
@@ -55,5 +68,6 @@ export default function Checkout() {
         </div>
       </div>
     </form>
+    </>
   )
 }

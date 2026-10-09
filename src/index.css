@@ -11,3 +11,112 @@ body { @apply bg-bg text-ink font-mono text-xs; }
   .input { @apply w-full bg-bg border border-line rounded px-2 py-2 outline-none focus:border-brand placeholder:text-mute; }
   .panel { @apply bg-panel border border-line rounded; }
 }
+
+/* Mobile views follow the supplied references; desktop utilities stay intact. */
+@media (max-width: 767px) {
+  body { background: #140d09; font-size: 11px; color: #eee8e2; }
+  .mobile-main { padding: 12px 20px 24px; }
+  .mobile-with-nav { padding-bottom: 90px; }
+  .site-footer { display: none; }
+  .mobile-top { border: 0; padding: 16px 20px 8px; font-size: 13px; }
+  .mobile-top button { width: 26px; height: 26px; border: 0; background: #2b1c12; color: #c98b51; }
+  .mobile-search { margin: 14px 0 12px; gap: 7px; }
+  .mobile-search label { background: #271811; border: 0; border-radius: 9px; font-size: 10px; }
+  .mobile-search input { padding: 10px 0; }
+  .mobile-search > button { height: 35px; width: 35px; border-radius: 10px; }
+  .home-hero { min-height: 148px; padding: 10px 12px 24px; border: 0; border-radius: 20px; background: radial-gradient(ellipse at 20% 0%, #855b34 0%, #4a301c 45%, #24170e 90%); }
+  .hero-copy { padding-right: 42%; }
+  .hero-copy > p:first-child { margin-bottom: 4px; font-size: 8px; }
+  .hero-copy h1 { font-size: 14px; line-height: 1.6; }
+  .hero-description { font-size: 9px; line-height: 1.5; margin: 5px 0; }
+  .hero-explore { padding: 0; background: transparent; color: #e5a150; font-size: 9px; font-weight: 400; }
+  .home-hero > .aspect-square { right: 12px; top: 10px; transform: none; width: 38%; border-radius: 12px; }
+  .home-hero > .hero-mini { position: absolute; top: auto; right: 30%; bottom: 26px; width: 19%; }
+  .hero-dots { display: flex; position: absolute; bottom: 7px; left: 0; right: 0; }
+  .hero-dots i { width: 5px; height: 5px; background: #bd8048; }
+  .home-market { margin-top: 13px; gap: 0; }
+  .market-tabs { gap: 5px; padding-bottom: 6px; margin-bottom: 8px; font-size: 10px; flex-wrap: nowrap; }
+  .mobile-nft-grid { gap: 18px 12px; align-items: start; }
+  .nft-card { background: transparent; border: 0; padding: 0; }
+  .nft-card:nth-child(even) { transform: translateY(28px); }
+  .nft-card > a { display: block; padding: 4px; background: #2b1c14; border-radius: 15px; }
+  .nft-card .aspect-square { border-radius: 12px; }
+  .nft-name { margin: 7px 5px 0; font-size: 10px; line-height: 1.25; }
+  .nft-price { margin: 0 5px; font-size: 12px; line-height: 1.3; }
+  .card-add { display: none; }
+  .card-favorite { right: 7px; top: 7px; border: 1px solid #b98b52; border-radius: 50%; background: #24170f; padding: 3px; }
+  .nft-card:not(:first-child) .card-favorite { opacity: 0; }
+  .nft-card:focus-within .card-favorite, .nft-card:hover .card-favorite { opacity: 1; }
+  .nft-card > span { top: 0; left: 0; padding: 4px 6px; font-size: 9px; border-radius: 4px 0 0; }
+  .mobile-bottom { height: 64px; border: 0; border-radius: 22px 22px 0 0; background: #2a1911; padding: 8px 12px max(8px, env(safe-area-inset-bottom)); }
+  .mobile-bottom > a, .mobile-bottom > button { color: #c4a47b; }
+  .mobile-bottom > a:first-child { color: #d8924b; }
+  .mobile-bottom > a:nth-child(3) { margin-top: -36px; width: 54px; height: 54px; border: 0; color: #f8e4c4; background: linear-gradient(135deg,#c89157,#9e612c); box-shadow: 0 0 0 10px #ae75301a; }
+  .mobile-detail { margin: -12px -20px -24px; }
+  .detail-art { position: relative; padding: 44px 20px 0; background: radial-gradient(ellipse at top,#452716,#21140c 65%); }
+  .detail-art > .aspect-square { border-radius: 16px 16px 0 0; }
+  .detail-back, .detail-heart { position: absolute; top: 16px; width: 27px; height: 27px; display: grid; place-items: center; border-radius: 50%; background: #322014; color: #c99860; }
+  .detail-back { left: 20px; } .detail-heart { right: 20px; }
+  .detail-info { padding: 24px 20px 20px; }
+  .detail-info h1 { font-size: 15px; font-weight: 700; }
+  .detail-rating { display: flex; align-items: center; gap: 3px; white-space: nowrap; border: 1px solid #bd7a36; border-radius: 16px; padding: 1px 4px; color: #d2934c; font-size: 9px; }
+  .detail-info p { color: #ae885e; font-size: 11px; margin-top: 7px; line-height: 1.8; }
+  .detail-info .detail-description { margin: 12px 0 8px; }
+  .edition-options { display: flex; gap: 5px; margin: 5px 0 9px; color: #a47b52; font-size: 10px; }
+  .edition-options span { border: 1px solid #4b2c16; border-radius: 20px; padding: 0 5px; }
+  .edition-options .selected { border-color: #c58643; color: #dc9a4b; }
+  .detail-purchase { border-top: 1px solid #382419; padding: 18px 20px 24px; }
+  .quantity-button { display: grid; place-items: center; width: 14px; height: 22px; border-radius: 7px; background: #cc8948; color: #21140c; }
+  .mobile-pill { display: inline-flex; justify-content: center; align-items: center; background: linear-gradient(120deg,#d39150,#ad723f); color: #160f08; border: 0; border-radius: 24px; min-height: 46px; padding: 12px 24px; font-weight: 700; }
+  .detail-cart { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: #342015; color: #c5a773; }
+  .cart-list { display: grid; gap: 14px; }
+  .cart-row { display: grid; grid-template-columns: 70px minmax(0,1fr) auto; grid-template-rows: auto auto; gap: 0 9px; position: relative; padding: 0; border: 0; border-radius: 12px; background: #291a13; overflow: hidden; min-height: 78px; }
+  .cart-art { grid-row: 1 / 3; width: 70px; align-self: stretch; border-radius: 10px 0 0 10px; }
+  .cart-art img { height: 100%; }
+  .cart-meta { grid-column: 2 / 4; padding: 8px 6px 0 0; font-size: 11px; }
+  .cart-meta > p:first-child { font-weight: 700; }
+  .cart-meta > p { margin-bottom: 3px; }
+  .cart-quantity { grid-column: 3; grid-row: 2; padding-right: 24px; gap: 3px; font-size: 12px; }
+  .cart-quantity button { padding: 0 !important; width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; border: 0; background: #3a2417; }
+  .cart-quantity span { width: 15px; }
+  .cart-price { grid-column: 2; grid-row: 2; text-align: left; padding-bottom: 7px; width: auto; font-size: 13px; }
+  .cart-remove { position: absolute; right: 5px; bottom: 15px; color: #c78b50; }
+  .cart-summary { margin: 0 -20px -24px; border: 0; border-radius: 20px 20px 0 0; padding: 20px; background: #2a1a13; font-size: 11px; }
+  .promo-row { gap: 0; border: 1px solid #4a2c17; border-radius: 22px; overflow: hidden; margin-bottom: 12px; }
+  .promo-row input { background: transparent; border: 0; min-width: 0; font-size: 10px; padding-left: 11px; }
+  .promo-row button { border-radius: 20px; padding: 9px 12px; }
+  .cart-summary > p { margin-top: 7px; }
+  .cart-summary > p:last-of-type { border: 0; padding-top: 4px; }
+  .cart-summary > .mobile-pill { margin-top: 20px; }
+  .mobile-checkout { display: flex; flex-direction: column; min-height: calc(100svh - 80px); padding-bottom: 0; }
+  .mobile-checkout h2 { font-weight: 700; font-size: 11px; }
+  .mobile-checkout button { font-size: 10px; }
+  .mobile-wallet-account, .mobile-wallet-provider { background: #291a13; border-radius: 12px; display: flex; align-items: center; gap: 12px; padding: 13px 14px; cursor: pointer; }
+  .mobile-wallet-account input, .mobile-wallet-provider input { appearance: none; width: 12px; height: 12px; border: 1px solid #5b371d; border-radius: 50%; flex-shrink: 0; }
+  .mobile-wallet-account input:checked, .mobile-wallet-provider input:checked { border-color: #cd8941; background: radial-gradient(circle,#cd8941 0 35%,transparent 42%); }
+  .mobile-wallet-account strong { font-size: 11px; display: block; margin-bottom: 4px; }
+  .mobile-wallet-account small { display: block; color: #b18a5c; font-size: 10px; line-height: 1.7; }
+  .mobile-wallet-provider { min-height: 51px; font-size: 10px; }
+  .wallet-symbol { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: #3c2516; color: #cc8c46; }
+  .checkout-confirm { width: 100%; margin-top: auto; margin-bottom: 0; min-height: 46px; }
+  .auth-dialog { border: 0; border-radius: 0; background: #140d09; padding: 0 22px 30px; min-height: 100svh; }
+  .auth-heading { position: relative; display: block; margin: 0; padding-top: 88px; }
+  .auth-heading > button { position: absolute; top: 16px; right: 0; }
+  .auth-logo { display: block; text-align: center; font-size: 27px; letter-spacing: 3px; }
+  .auth-title { margin: 58px 0 28px; font-size: 13px; }
+  .auth-description { display: none; }
+  .auth-form { display: grid; gap: 9px; }
+  .auth-form > * { margin: 0 !important; }
+  .auth-form .input { min-height: 39px; padding: 10px 12px; border-radius: 8px; border-color: #3a2415; font-size: 11px; }
+  .auth-form > a { font-size: 10px; }
+  .auth-form .auth-submit { margin-top: 23px !important; min-height: 47px; border-radius: 6px; }
+  .auth-divider { display: flex; align-items: center; gap: 8px; margin: 31px 0 10px; font-size: 9px; color: #eee8e2; }
+  .auth-divider::before, .auth-divider::after { content: ''; height: 1px; background: #3a2415; flex: 1; }
+  .auth-dialog .btn-ghost { border-color: #3a2415; color: #c4a47b; min-height: 32px; font-size: 10px; }
+  .auth-switch { margin-top: 32px; color: #b08d60; font-size: 10px; }
+}
+@media (max-width: 767px) {
+  .home-hero > .aspect-square { translate: none; }
+  .auth-dialog .auth-switch { margin-top: 32px; }
+  .mobile-checkout .checkout-confirm { margin-top: auto; }
+}
