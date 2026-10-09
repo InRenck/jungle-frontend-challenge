@@ -10,7 +10,7 @@ Durante o desenvolvimento, procurei seguir a referência visual e implementar as
 
 O projeto está disponível na Vercel:
 
-Acessar o Kurio
+[Acessar o Kurio](https://jungle-frontend-challenge-git-main-inrencks-projects.vercel.app/)
 
 ✨ Funcionalidades
 
