@@ -6,7 +6,7 @@ import {
   Search,
   SlidersHorizontal,
 } from "lucide-react";
-
+import { HomeExtras } from "../components/HomeExtras";
 import { NftCard, NftImg } from "../components";
 import { COLLECTIONS, NETWORKS } from "../data";
 import { useNfts } from "../api/nfts";
@@ -474,6 +474,7 @@ export default function Home() {
             )}
         </div>
       </section>
+      <HomeExtras />
     </>
   );
 }

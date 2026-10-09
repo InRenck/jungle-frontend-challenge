@@ -225,47 +225,159 @@ function Col({ title, items }: { title: string; items: string[] }) {
 }
 
 function Footer(): ReactNode {
+  const groups = [
+    {
+      title: "Meu perfil",
+      items: [
+        "Meu perfil",
+        "Minha coleção",
+        "Atividade",
+        "Estúdio do criador",
+        "Lista de interesse",
+      ],
+    },
+    {
+      title: "Central de ajuda",
+      items: [
+        "Central de ajuda",
+        "Como comprar NFTs",
+        "Carteira e segurança",
+        "Política do mercado",
+        "Denunciar item",
+      ],
+    },
+    {
+      title: "Coleções",
+      items: [
+        "Arte digital",
+        "Fotografia",
+        "Música",
+        "Arte 3D",
+        "Utilidade",
+      ],
+    },
+  ];
+
+  const features = [
+    {
+      icon: "W",
+      title: "Segurança da carteira",
+      text: "Proteja sua carteira e colecione arte digital verificada com confiança.",
+    },
+    {
+      icon: "C",
+      title: "Criadores em destaque",
+      text: "Conheça artistas, estúdios e comunidades que moldam a cultura digital na rede.",
+    },
+    {
+      icon: "D",
+      title: "Alertas de lançamentos",
+      text: "Receba calendários de cunhagem, novidades de listas de acesso e análises do mercado.",
+    },
+  ];
+
   return (
-    <footer className="site-footer mt-10 border-t border-line bg-panel pb-16 md:pb-0">
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:grid-cols-2 md:grid-cols-4">
-        <Col
-          title="Meu perfil"
-          items={[
-            "Meu perfil",
-            "Minha coleção",
-            "Atividade",
-            "Lista de interesse",
-          ]}
-        />
-        <Col
-          title="Central de ajuda"
-          items={[
-            "Central de ajuda",
-            "Como comprar NFTs",
-            "Carteira e segurança",
-            "Denunciar item",
-          ]}
-        />
-        <Col
-          title="Coleções"
-          items={["Arte digital", "Fotografia", "Música", "Arte 3D"]}
-        />
-        <div>
-          <h4 className="mb-2 font-bold text-brand">
-            Antecipe-se ao próximo lançamento
-          </h4>
-          <form className="flex gap-1" onSubmit={(e) => e.preventDefault()}>
-            <input
-              className="input"
-              type="email"
-              placeholder="digite seu e-mail..."
-              aria-label="E-mail"
-            />
-            <button className="btn">Enviar</button>
-          </form>
+    <footer className="site-footer mt-12 border-t border-line bg-panel pb-16 md:pb-0">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="grid gap-6 border-b border-line py-6 md:grid-cols-4">
+          {features.map(feature => (
+            <div
+              key={feature.title}
+              className="md:border-r md:border-line md:pr-4"
+            >
+              <div className="mb-3 grid h-10 w-10 place-items-center rounded-full bg-brand font-bold text-bg">
+                {feature.icon}
+              </div>
+              <h3 className="font-bold">{feature.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed text-mute">
+                {feature.text}
+              </p>
+            </div>
+          ))}
+
+          <div>
+            <h3 className="mb-3 font-bold">
+              Antecipe-se ao próximo lançamento
+            </h3>
+            <form
+              onSubmit={event => {
+                event.preventDefault();
+                const form = event.currentTarget;
+                const input = form.elements.namedItem("newsletter-email");
+                if (input instanceof HTMLInputElement) {
+                  input.value = "";
+                }
+              }}
+              className="flex overflow-hidden rounded border border-line"
+            >
+              <input
+                name="newsletter-email"
+                required
+                type="email"
+                placeholder="digite seu e-mail..."
+                aria-label="E-mail para novidades"
+                className="min-w-0 flex-1 bg-transparent px-3 py-2 text-xs outline-none"
+              />
+              <button type="submit" className="bg-brand px-3 font-bold text-bg">
+                Enviar
+              </button>
+            </form>
+            <p className="mt-3 text-xs text-mute">
+              Receba lançamentos selecionados, histórias de criadores e novidades do mercado.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-4 border-b border-line py-5 text-xs sm:grid-cols-2 md:grid-cols-4">
+          <strong className="tracking-widest">KURIO</strong>
+          <p className="text-mute">
+            Feito para colecionadores, criadores e cultura.
+          </p>
+          <p className="text-mute">contato@email.com</p>
+          <p className="text-mute">Entre em contato pelos nossos canais.</p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 py-8 md:grid-cols-4">
+          {groups.map(group => (
+            <div key={group.title}>
+              <h3 className="mb-3 font-bold">{group.title}</h3>
+              <ul className="space-y-2 text-xs text-mute">
+                {group.items.map(item => (
+                  <li key={item}>
+                    <a href="#explorar" className="hover:text-brand">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div>
+            <h3 className="mb-3 font-bold">Redes sociais</h3>
+            <div className="flex flex-wrap gap-2">
+              {["f", "◎", "𝕏", "in", "▶"].map(social => (
+                <span
+                  key={social}
+                  className="grid h-7 w-7 place-items-center rounded border border-brand text-xs font-bold text-brand"
+                  aria-hidden="true"
+                >
+                  {social}
+                </span>
+              ))}
+            </div>
+
+            <h3 className="mb-3 mt-6 font-bold">
+              Carteiras compatíveis
+            </h3>
+            <p className="text-xs font-bold text-brand">
+              METAMASK · WALLETCONNECT · COINBASE
+            </p>
+          </div>
         </div>
       </div>
-      <p className="border-t border-line py-3 text-center text-mute">
+
+      <p className="border-t border-line py-4 text-center text-xs text-mute">
         © 2026 Kurio. Propriedade digital para todos.
       </p>
     </footer>
