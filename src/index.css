@@ -12,7 +12,6 @@ body { @apply bg-bg text-ink font-mono text-xs; }
   .panel { @apply bg-panel border border-line rounded; }
 }
 
-/* Mobile views follow the supplied references; desktop utilities stay intact. */
 @media (max-width: 767px) {
   body { background: #140d09; font-size: 11px; color: #eee8e2; }
   .mobile-main { padding: 12px 20px 24px; }

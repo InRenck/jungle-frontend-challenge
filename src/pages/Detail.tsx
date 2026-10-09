@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ArrowLeft, Heart, Minus, Plus, ShoppingCart, Star } from 'lucide-react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from "../router-compat"
 import { NftCard, NftImg } from '../components'
 import { NFTS, eth } from '../data'
 import { useCart } from '../cart'

@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
 
 type User = { name: string; email: string } | null
 type Ctx = { user: User; login: (u: NonNullable<User>) => void; logout: () => void; authOpen: boolean; openAuth: () => void; closeAuth: () => void }
@@ -17,12 +16,3 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   return <AuthCtx.Provider value={{ user, login, logout, authOpen, openAuth: () => setAuthOpen(true), closeAuth: () => setAuthOpen(false) }}>{children}</AuthCtx.Provider>
 }
 
-/** Bloqueia rotas que exigem conta. Sem login, volta para a home e abre o modal de login. */
-export function ProtectedRoute() {
-  const { user, openAuth } = useAuth()
-  useEffect(() => { if (!user) openAuth() }, [user])
-  if (!user) {
-    return <Navigate to="/" replace />
-  }
-  return <Outlet />
-}

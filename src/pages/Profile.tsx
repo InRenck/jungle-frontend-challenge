@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "../router-compat";
 import { Activity, Download, Gift, Heart, LifeBuoy, LogOut, User, Wallet } from "lucide-react";
 import { useAuth } from "../auth";
 

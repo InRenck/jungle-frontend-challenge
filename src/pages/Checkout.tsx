@@ -1,6 +1,6 @@
 import { useRef, useState, type FormEvent } from "react";
 import { MoreVertical, Wallet } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "../router-compat";
 import { useMutation } from "@tanstack/react-query";
 
 import { NftImg } from "../components";
@@ -195,7 +195,6 @@ export default function Checkout() {
 
   return (
     <>
-      {/* CHECKOUT MOBILE */}
       <form
         className="mobile-checkout md:hidden"
         onSubmit={confirm}
@@ -300,7 +299,6 @@ export default function Checkout() {
         <ConfirmButton mobile />
       </form>
 
-      {/* CHECKOUT DESKTOP */}
       <form
         className="hidden md:block"
         onSubmit={confirm}
@@ -310,7 +308,6 @@ export default function Checkout() {
         </p>
 
         <div className="grid gap-6 md:grid-cols-[1fr_320px]">
-          {/* DADOS DO COLECIONADOR */}
           <div>
             <h2 className="mb-3 font-bold">
               Perfil do colecionador
@@ -350,7 +347,6 @@ export default function Checkout() {
             </div>
           </div>
 
-          {/* RESUMO E CARTEIRA */}
           <div className="space-y-3">
             <div className="panel space-y-2 p-3">
               <h2 className="font-bold">

@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "./router-compat";
 import {
   ArrowLeft, Compass, Eye, EyeOff, Facebook, Heart, Home as HomeIcon, Instagram, Linkedin, ScanLine, Wallet,
   LogIn, Search, ShoppingCart, Twitter, User, X, Youtube,
@@ -185,7 +185,6 @@ export function Layout() {
         </div>
       </header>
 
-      {/* Barra superior mobile (a Home tem a própria busca) */}
       {!isHome && !isDetail && (
         <div className="mobile-top flex items-center gap-3 border-b border-line px-4 py-3 md:hidden">
           <button aria-label="Voltar" onClick={() => nav(-1)} className="grid h-7 w-7 place-items-center rounded-full border border-line"><ArrowLeft size={14} /></button>
@@ -197,7 +196,6 @@ export function Layout() {
       <main className={`mobile-main mx-auto max-w-6xl px-4 py-5 md:py-6 md:pb-6 ${showBottom ? "mobile-with-nav" : ""}`}><Outlet /></main>
       <Footer />
 
-      {/* Navegação inferior mobile */}
       {showBottom && <nav aria-label="Navegação principal" className="mobile-bottom fixed inset-x-0 bottom-0 z-50 flex items-center justify-around border-t border-line bg-panel px-4 py-2 md:hidden">
         <NavLink to="/" end aria-label="Início" className={bottom}><HomeIcon size={18} /></NavLink>
         <NavLink to="/perfil/carteiras" aria-label="Carteiras" className={bottom}><Heart size={18} fill="currentColor" /></NavLink>

@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "../router-compat";
 import { useQuery } from "@tanstack/react-query";
 import { NftImg } from "../components";
 import { getOrder } from "../api/orders";

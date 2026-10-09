@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "../router-compat";
 import {
   ChevronLeft,
   ChevronRight,
@@ -195,7 +195,6 @@ export default function Home() {
 
   return (
     <>
-      {/* BUSCA MOBILE */}
       <div className="mobile-search mb-4 flex gap-2 md:hidden">
         <label className="panel flex flex-1 items-center gap-2 px-3">
           <Search size={14} className="text-mute" />
@@ -231,7 +230,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* HERO */}
       <section className="home-hero panel relative grid items-center gap-4 overflow-hidden p-4 md:grid-cols-2 md:gap-6 md:border-0 md:bg-transparent md:p-0">
         <div className="hero-copy max-md:pr-28">
           <p className="mb-2 text-mute">
@@ -290,7 +288,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MARKETPLACE */}
       <section
         id="explorar"
         className="home-market mt-8 grid scroll-mt-4 gap-6 md:grid-cols-[200px_1fr]"
@@ -302,7 +299,6 @@ export default function Home() {
         </aside>
 
         <div>
-          {/* TABS E ORDENAÇÃO */}
           <div className="market-tabs mb-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-line pb-2">
             {TABS.map(t => (
               <button
@@ -347,7 +343,6 @@ export default function Home() {
             </label>
           </div>
 
-          {/* ESTADOS DA API */}
           {isPending ? (
             <div
               role="status"
@@ -423,7 +418,6 @@ export default function Home() {
             </>
           )}
 
-          {/* PAGINAÇÃO */}
           {!isPending &&
             !isError &&
             pages > 1 && (
